@@ -1,6 +1,6 @@
 const ALLOWED_OPERATORS = ["add", "subtract", "multiply", "divide"];
 const PRECISION_THRESHOLD = 7;
-const MAX_LENGTH = 18;
+const MAX_LENGTH = 14;
 
 export class Calculator {
   operator = "";
