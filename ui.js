@@ -112,6 +112,7 @@ export function bindKeyboard() {
     } else if (POINT.includes(event.key)) {
       handleKeyDown("#point-btn");
     } else if (event.key in OP) {
+      event.preventDefault();
       handleKeyDown(`button.op-button[data-op="${OP[event.key]}"]`);
     } else if (event.key == "=") {
       handleKeyDown("#equals-btn");
