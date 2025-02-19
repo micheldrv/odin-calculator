@@ -181,7 +181,6 @@ export class Calculator {
   }
 
   static removeNumber() {
-    debugger;
     this.operateNumber((num, isNumberA) => {
       if (!isNumberA && num === "") {
         this.operator = "";
