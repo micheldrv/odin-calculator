@@ -7,6 +7,7 @@
   --main-padding: 32px;
   --main-gap: 24px;
   --small-padding: 12px;
+  --small-gap: 12px;
 
   --page-bg: hsl(222, 26%, 31%);
   --keypad-bg: hsl(223, 31%, 20%);
@@ -156,4 +157,28 @@ button.important-button:hover {
 button.important-button:active,
 button.important-button.active {
   background-color: var(--button-important-hover);
+}
+
+.attribution {
+  position: absolute;
+  top: var(--main-padding);
+  right: var(--main-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--small-gap);
+  align-items: end;
+  text-align: right;
+}
+
+.attribution h2 {
+  font-size: 24px;
+}
+
+.attribution p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.attribution a {
+  color: var(--button-alt-hover);
 }
