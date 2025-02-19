@@ -87,26 +87,94 @@ export function bindKeyboard() {
     "*": "multiply",
     "/": "divide",
   };
+
+  const handleKeyDown = (buttonQuery) => {
+    const button = document.querySelector(buttonQuery);
+    if (button) {
+      button.focus();
+      button.classList.add("active");
+    }
+  };
+
+  const handleKeyUp = (buttonQuery, func) => {
+    const button = document.querySelector(buttonQuery);
+    if (button) {
+      button.classList.remove("active");
+    }
+
+    func();
+    updateDisplay();
+  };
+
+  document.body.addEventListener("keydown", (event) => {
+    if (KEYS.includes(event.key)) {
+      handleKeyDown(`button.num-button[data-num="${event.key}"]`);
+    } else if (POINT.includes(event.key)) {
+      handleKeyDown("#point-btn");
+    } else if (event.key in OP) {
+      handleKeyDown(`button.op-button[data-op="${OP[event.key]}"]`);
+    } else if (event.key == "=") {
+      handleKeyDown("#equals-btn");
+    } else if (event.key == "Enter") {
+      if (document.activeElement instanceof HTMLButtonElement) {
+        document.activeElement.focus();
+        document.activeElement.classList.add("active");
+      } else {
+        handleKeyDown("#equals-btn");
+      }
+    } else if (event.key == "Backspace") {
+      handleKeyDown("#del-btn");
+    } else if (event.key == "Escape") {
+      if (!(document.activeElement instanceof HTMLButtonElement)) {
+        handleKeyDown("#reset-btn");
+      }
+    }
+  });
+
   document.body.addEventListener("keyup", (event) => {
     console.log(event.key);
     if (KEYS.includes(event.key)) {
-      Calculator.addNumber(event.key);
-      updateDisplay();
+      handleKeyUp(`button.num-button[data-num="${event.key}"]`, () => {
+        Calculator.addNumber(event.key);
+      });
     } else if (POINT.includes(event.key)) {
-      Calculator.addPoint();
-      updateDisplay();
+      handleKeyUp("#point-btn", () => {
+        Calculator.addPoint();
+      });
     } else if (event.key in OP) {
-      Calculator.setOperator(OP[event.key]);
-      updateDisplay();
+      handleKeyUp(`button.op-button[data-op="${OP[event.key]}"]`, () => {
+        Calculator.setOperator(OP[event.key]);
+      });
+    } else if (event.key == "=") {
+      handleKeyUp("#equals-btn", () => {
+        Calculator.doOperation();
+      });
     } else if (event.key == "Enter") {
-      Calculator.doOperation();
-      updateDisplay();
+      if (document.activeElement instanceof HTMLButtonElement) {
+        document.activeElement.classList.remove("active");
+      } else {
+        handleKeyUp("#equals-btn", () => {
+          Calculator.doOperation();
+        });
+      }
     } else if (event.key == "Backspace") {
-      Calculator.removeNumber();
-      updateDisplay();
+      handleKeyUp("#del-btn", () => {
+        Calculator.removeNumber();
+      });
     } else if (event.key == "Escape") {
-      Calculator.reset();
-      updateDisplay();
+      if (document.activeElement instanceof HTMLButtonElement) {
+        document.activeElement.classList.remove("active");
+        if (document.activeElement == document.querySelector("#reset-btn")) {
+          handleKeyUp("#reset-btn", () => {
+            Calculator.reset();
+          });
+        }
+        document.activeElement.blur();
+      } else {
+        handleKeyUp("#reset-btn", () => {
+          Calculator.reset();
+        });
+      }
     }
   });
 }

@@ -108,11 +108,16 @@ button:hover {
   background-color: var(--button-primary-hover);
 }
 
-button:active {
+button:active,
+button.active {
+  background-color: var(--button-primary-hover);
   border-bottom: none;
   position: relative;
   top: 4px;
   height: 61px;
+}
+button:focus {
+  outline: 2px solid var(--text-primary);
 }
 
 .wide-button {
@@ -131,6 +136,11 @@ button.alt-button:hover {
   border-bottom-color: var(--button-alt);
 }
 
+button.alt-button:active,
+button.alt-button.active {
+  background-color: var(--button-alt-hover);
+}
+
 button.important-button {
   font-size: 28px;
   color: var(--text-primary);
@@ -141,4 +151,9 @@ button.important-button {
 button.important-button:hover {
   background-color: var(--button-important-hover);
   border-bottom-color: var(--button-important);
+}
+
+button.important-button:active,
+button.important-button.active {
+  background-color: var(--button-important-hover);
 }
