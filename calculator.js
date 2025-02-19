@@ -1,5 +1,6 @@
 const ALLOWED_OPERATORS = ["add", "subtract", "multiply", "divide"];
 const PRECISION_THRESHOLD = 7;
+const MAX_LENGTH = 18;
 
 export class Calculator {
   operator = "";
@@ -43,12 +44,19 @@ export class Calculator {
       );
 
       this.result = result;
+      if (this.result.length > MAX_LENGTH) {
+        this.error = "TOO BIG";
+      }
     }
   }
 
   static setOperator(operator) {
     if (this.error) {
       this.reset();
+    }
+
+    if (!this.canAddCharacter()) {
+      return;
     }
 
     if (ALLOWED_OPERATORS.includes(operator)) {
@@ -128,25 +136,44 @@ export class Calculator {
     this.updateError();
   }
 
+  static canAddCharacter() {
+    if (this.error) return false;
+
+    if (this.numberB !== "") {
+      return this.numberA.length + 2 + this.numberB.length < MAX_LENGTH;
+    }
+
+    if (this.operator != "") {
+      return this.numberA.length + 2 < MAX_LENGTH;
+    }
+
+    return this.numberA.length < MAX_LENGTH;
+  }
+
   static addNumber(number) {
     this.operateNumber((num) => {
       if (!this.isValidNum(num)) {
         num = "";
       }
 
-      num += number.toString();
-      num = this.removeLeadingZeroes(num);
+      if (this.canAddCharacter()) {
+        num += number.toString();
+        num = this.removeLeadingZeroes(num);
+      }
+
       return num;
     });
   }
 
   static addPoint() {
     this.operateNumber((num) => {
-      if (!num.includes(".")) {
-        if (num == "") {
-          num = "0.";
-        } else {
-          num += ".";
+      if (this.canAddCharacter()) {
+        if (!num.includes(".")) {
+          if (num == "") {
+            num = "0.";
+          } else {
+            num += ".";
+          }
         }
       }
       return num;
