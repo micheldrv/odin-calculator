@@ -4,8 +4,28 @@
 }
 
 :root {
-  --main-padding: 24px;
+  --main-padding: 32px;
+  --main-gap: 24px;
   --small-padding: 12px;
+
+  --page-bg: hsl(222, 26%, 31%);
+  --keypad-bg: hsl(223, 31%, 20%);
+  --display-bg: hsl(224, 36%, 15%);
+
+  --text-primary: hsl(0, 0%, 100%);
+  --text-secondary: hsl(221, 14%, 31%);
+
+  --button-primary: hsl(30, 25%, 89%);
+  --button-primary-shadow: hsl(28, 16%, 65%);
+  --button-primary-hover: hsl(0, 0%, 100%);
+
+  --button-alt: hsl(225, 21%, 49%);
+  --button-alt-shadow: hsl(224, 28%, 35%);
+  --button-alt-hover: hsl(224, 51%, 76%);
+
+  --button-important: hsl(6, 63%, 50%);
+  --button-important-shadow: hsl(6, 70%, 34%);
+  --button-important-hover: hsl(6, 93%, 67%);
 }
 
 * {
@@ -17,26 +37,39 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: var(--main-padding);
+  gap: var(--main-gap);
   justify-content: center;
   align-items: center;
   font-family: "League Spartan", sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text-primary);
 }
 
 .calculator {
   display: flex;
   flex-direction: column;
-  gap: var(--main-padding);
+  gap: var(--main-gap);
 }
 
 .section {
   padding: var(--main-padding);
-  border: 1px solid black;
+  border-radius: 12px;
+}
+.calculator-top {
+  padding: var(--small-padding);
+}
+
+.calculator-display {
+  background-color: var(--display-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: end;
 }
 
 #display-top {
   text-align: right;
-  font-size: 28px;
+  font-size: 34px;
 }
 
 #display-top:empty::before {
@@ -46,21 +79,66 @@ body {
 
 #display-main {
   text-align: right;
-  font-size: 38px;
+  font-size: 58px;
+  font-weight: bold;
 }
 
 .calculator-body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--main-padding);
+  gap: var(--main-gap);
+  background-color: var(--keypad-bg);
 }
 
 button {
   min-width: 100px;
   height: 65px;
-  font-size: 26px;
+  color: var(--text-secondary);
+  background-color: var(--button-primary);
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  border-bottom: 4px solid var(--button-primary-shadow);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+button:hover {
+  background-color: var(--button-primary-hover);
+}
+
+button:active {
+  border-bottom: none;
+  position: relative;
+  top: 4px;
+  height: 61px;
 }
 
 .wide-button {
   grid-column: span 2;
+}
+
+button.alt-button {
+  font-size: 28px;
+  color: var(--text-primary);
+  background-color: var(--button-alt);
+  border-bottom-color: var(--button-alt-shadow);
+}
+
+button.alt-button:hover {
+  background-color: var(--button-alt-hover);
+  border-bottom-color: var(--button-alt);
+}
+
+button.important-button {
+  font-size: 28px;
+  color: var(--text-primary);
+  background-color: var(--button-important);
+  border-bottom-color: var(--button-important-shadow);
+}
+
+button.important-button:hover {
+  background-color: var(--button-important-hover);
+  border-bottom-color: var(--button-important);
 }
