@@ -12,6 +12,35 @@
     <title>Calculator</title>
   </head>
   <body>
-    <script src="script.js"></script>
+    <div class="calculator">
+      <div class="section">
+        <h1>calc</h1>
+      </div>
+      <div class="section">
+        <p id="display-top"></p>
+        <p id="display-main">0</p>
+      </div>
+      <div class="section calculator-body">
+        <button class="num-button" data-num="7">7</button>
+        <button class="num-button" data-num="8">8</button>
+        <button class="num-button" data-num="9">9</button>
+        <button id="del-btn">DEL</button>
+        <button class="num-button" data-num="4">4</button>
+        <button class="num-button" data-num="5">5</button>
+        <button class="num-button" data-num="6">6</button>
+        <button class="op-button" data-op="add">+</button>
+        <button class="num-button" data-num="1">1</button>
+        <button class="num-button" data-num="2">2</button>
+        <button class="num-button" data-num="3">3</button>
+        <button class="op-button" data-op="subtract">-</button>
+        <button id="point-btn">.</button>
+        <button class="num-button" data-num="0">0</button>
+        <button class="op-button" data-op="divide">/</button>
+        <button class="op-button" data-op="multiply">x</button>
+        <button class="wide-button" id="reset-btn">RESET</button>
+        <button class="wide-button" id="equals-btn">=</button>
+      </div>
+    </div>
+    <script src="script.js" type="module"></script>
   </body>
 </html>

@@ -3,6 +3,11 @@
   src: url("assets/fonts/LeagueSpartan-VariableFont_wght.ttf");
 }
 
+:root {
+  --main-padding: 24px;
+  --small-padding: 12px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +17,50 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--main-padding);
   justify-content: center;
   align-items: center;
   font-family: "League Spartan", sans-serif;
-  font-size: 32px;
+}
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: var(--main-padding);
+}
+
+.section {
+  padding: var(--main-padding);
+  border: 1px solid black;
+}
+
+#display-top {
+  text-align: right;
+  font-size: 28px;
+}
+
+#display-top:empty::before {
+  content: "";
+  display: inline-block;
+}
+
+#display-main {
+  text-align: right;
+  font-size: 38px;
+}
+
+.calculator-body {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--main-padding);
+}
+
+button {
+  min-width: 100px;
+  height: 65px;
+  font-size: 26px;
+}
+
+.wide-button {
+  grid-column: span 2;
 }
