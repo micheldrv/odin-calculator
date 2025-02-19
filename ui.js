@@ -77,3 +77,36 @@ export function bindButtons() {
   bindOperatorButtons();
   bindOtherButtons();
 }
+
+export function bindKeyboard() {
+  const KEYS = "0123456789";
+  const POINT = ".,";
+  const OP = {
+    "+": "add",
+    "-": "subtract",
+    "*": "multiply",
+    "/": "divide",
+  };
+  document.body.addEventListener("keyup", (event) => {
+    console.log(event.key);
+    if (KEYS.includes(event.key)) {
+      Calculator.addNumber(event.key);
+      updateDisplay();
+    } else if (POINT.includes(event.key)) {
+      Calculator.addPoint();
+      updateDisplay();
+    } else if (event.key in OP) {
+      Calculator.setOperator(OP[event.key]);
+      updateDisplay();
+    } else if (event.key == "Enter") {
+      Calculator.doOperation();
+      updateDisplay();
+    } else if (event.key == "Backspace") {
+      Calculator.removeNumber();
+      updateDisplay();
+    } else if (event.key == "Escape") {
+      Calculator.reset();
+      updateDisplay();
+    }
+  });
+}
