@@ -6,7 +6,7 @@
 :root {
   --main-padding: 32px;
   --main-gap: 24px;
-  --small-padding: 12px;
+  --small-padding: 18px;
   --small-gap: 12px;
 
   --page-bg: hsl(222, 26%, 31%);
@@ -47,6 +47,7 @@ body {
 }
 
 .calculator {
+  margin: var(--main-padding);
   display: flex;
   flex-direction: column;
   gap: var(--main-gap);
@@ -56,6 +57,7 @@ body {
   padding: var(--main-padding);
   border-radius: 12px;
 }
+
 .calculator-top {
   padding: var(--small-padding);
 }
@@ -64,7 +66,7 @@ body {
   background-color: var(--display-bg);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--small-gap);
   align-items: end;
 }
 
@@ -117,6 +119,7 @@ button.active {
   top: 4px;
   height: 61px;
 }
+
 button:focus {
   outline: 2px solid var(--text-primary);
 }
@@ -181,4 +184,70 @@ button.important-button.active {
 
 .attribution a {
   color: var(--button-alt-hover);
+}
+
+@media (max-width: 1200px) {
+  .attribution {
+    position: unset;
+    align-items: center;
+    text-align: center;
+    margin: var(--main-padding);
+  }
+}
+
+@media (max-width: 650px) {
+  .section {
+    padding: var(--small-padding);
+  }
+
+  .calculator-top {
+    padding: var(--small-padding);
+  }
+
+  .calculator-display {
+    gap: 12px;
+  }
+
+  .calculator-body {
+    gap: var(--small-gap);
+  }
+
+  button {
+    min-width: 65px;
+    height: 60px;
+    font-size: 32px;
+  }
+
+  button:active,
+  button.active {
+    top: 4px;
+    height: 56px;
+  }
+
+  button.alt-button,
+  button.important-button {
+    font-size: 18px;
+  }
+
+  #display-top {
+    font-size: 22px;
+  }
+
+  #display-main {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 370px) {
+  .calculator {
+    gap: var(--small-gap);
+  }
+
+  button {
+    min-width: 50px;
+  }
+
+  #display-main {
+    font-size: 28px;
+  }
 }
