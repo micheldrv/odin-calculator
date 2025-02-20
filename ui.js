@@ -117,12 +117,8 @@ export function bindKeyboard() {
     } else if (event.key == "=") {
       handleKeyDown("#equals-btn");
     } else if (event.key == "Enter") {
-      if (document.activeElement instanceof HTMLButtonElement) {
-        document.activeElement.focus();
-        document.activeElement.classList.add("active");
-      } else {
-        handleKeyDown("#equals-btn");
-      }
+      event.preventDefault();
+      handleKeyDown("#equals-btn");
     } else if (event.key == "Backspace") {
       handleKeyDown("#del-btn");
     } else if (event.key == "Escape") {
@@ -151,13 +147,9 @@ export function bindKeyboard() {
         Calculator.doOperation();
       });
     } else if (event.key == "Enter") {
-      if (document.activeElement instanceof HTMLButtonElement) {
-        document.activeElement.classList.remove("active");
-      } else {
-        handleKeyUp("#equals-btn", () => {
-          Calculator.doOperation();
-        });
-      }
+      handleKeyUp("#equals-btn", () => {
+        Calculator.doOperation();
+      });
     } else if (event.key == "Backspace") {
       handleKeyUp("#del-btn", () => {
         Calculator.removeNumber();
