@@ -9,24 +9,11 @@
   --small-padding: 18px;
   --small-gap: 12px;
 
-  --page-bg: hsl(222, 26%, 31%);
-  --keypad-bg: hsl(223, 31%, 20%);
-  --display-bg: hsl(224, 36%, 15%);
-
-  --text-primary: hsl(0, 0%, 100%);
-  --text-secondary: hsl(221, 14%, 31%);
-
-  --button-primary: hsl(30, 25%, 89%);
-  --button-primary-shadow: hsl(28, 16%, 65%);
-  --button-primary-hover: hsl(0, 0%, 100%);
-
-  --button-alt: hsl(225, 21%, 49%);
-  --button-alt-shadow: hsl(224, 28%, 35%);
-  --button-alt-hover: hsl(224, 51%, 76%);
-
-  --button-important: hsl(6, 63%, 50%);
-  --button-important-shadow: hsl(6, 70%, 34%);
-  --button-important-hover: hsl(6, 93%, 67%);
+  --theme-sel-knob: 18px;
+  --theme-sel-gap: 6px;
+  --theme-sel-knob-3: calc(var(--theme-sel-knob) * 3);
+  --theme-sel-gap-4: calc(var(--theme-sel-gap) * 4);
+  --theme-sel-width: calc(var(--theme-sel-knob-3) + var(--theme-sel-gap-4));
 }
 
 * {
@@ -60,6 +47,66 @@ body {
 
 .calculator-top {
   padding: var(--small-padding);
+  display: flex;
+  align-items: end;
+
+  h1 {
+    flex: 1;
+  }
+}
+
+.theme-container {
+  display: flex;
+  align-items: end;
+  gap: var(--main-gap);
+
+  p {
+    margin-bottom: var(--theme-sel-gap);
+  }
+}
+
+.theme-selector {
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-selector-numbers {
+  box-sizing: border-box;
+  width: var(--theme-sel-width);
+  padding: var(--theme-sel-gap);
+  display: grid;
+  grid-template-columns: repeat(3, var(--theme-sel-knob));
+  gap: var(--theme-sel-gap);
+  text-align: center;
+}
+
+#theme-selector-btn {
+  box-sizing: border-box;
+  width: var(--theme-sel-width);
+  padding: var(--theme-sel-gap);
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, var(--theme-sel-knob));
+  gap: var(--theme-sel-gap);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: var(--keypad-bg);
+  border-radius: var(--theme-sel-knob);
+
+  &:hover #theme-selector-knob {
+    background-color: var(--button-important-hover);
+  }
+  &:focus {
+    outline: 2px solid var(--text-primary);
+  }
+}
+
+#theme-selector-knob {
+  width: var(--theme-sel-knob);
+  height: var(--theme-sel-knob);
+  border-radius: 50%;
+  background-color: var(--button-important);
 }
 
 .calculator-display {
@@ -93,7 +140,7 @@ body {
   background-color: var(--keypad-bg);
 }
 
-button {
+button.btn {
   min-width: 100px;
   height: 65px;
   color: var(--text-secondary);
@@ -129,7 +176,7 @@ button {
 
   &.alt-button {
     font-size: 28px;
-    color: var(--text-primary);
+    color: var(--text-tertiary);
     background-color: var(--button-alt);
     border-bottom-color: var(--button-alt-shadow);
 
@@ -146,7 +193,7 @@ button {
 
   &.important-button {
     font-size: 28px;
-    color: var(--text-primary);
+    color: var(--text-important);
     background-color: var(--button-important);
     border-bottom-color: var(--button-important-shadow);
 
@@ -212,7 +259,7 @@ button {
     gap: var(--small-gap);
   }
 
-  button {
+  button.btn {
     min-width: 65px;
     height: 60px;
     font-size: 32px;
@@ -243,7 +290,7 @@ button {
     gap: var(--small-gap);
   }
 
-  button {
+  button.btn {
     min-width: 50px;
   }
 

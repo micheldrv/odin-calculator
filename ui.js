@@ -46,6 +46,73 @@ function bindOtherButtons() {
   });
 }
 
+function bindThemeButton() {
+  const themeButton = document.querySelector("#theme-selector-btn");
+
+  themeButton.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const themes = ["theme-1", "theme-2", "theme-3"];
+    const html = document.documentElement;
+
+    const hasTheme = () => {
+      for (const theme of themes) {
+        if (html.classList.contains(theme)) {
+          return true;
+        }
+      }
+      return false;
+    };
+    const clearTheme = () => {
+      for (const theme of themes) {
+        html.classList.remove(theme);
+      }
+    };
+    const getThemeIndex = () => {
+      for (const cl of html.classList) {
+        const index = themes.indexOf(cl);
+        if (index != -1) {
+          return index;
+        }
+      }
+      return -1;
+    };
+
+    if (hasTheme()) {
+      let index = getThemeIndex();
+      if (index == -1) {
+        index = 0;
+      } else {
+      }
+      index += 1;
+      if (index >= themes.length) {
+        index = 0;
+      }
+
+      clearTheme();
+      html.classList.add(themes[index]);
+    } else {
+      const prefersLight = () => {
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: light)").matches
+        ) {
+          return true;
+        }
+        return false;
+      };
+
+      if (prefersLight()) {
+        clearTheme();
+        html.classList.add("theme-3");
+      } else {
+        clearTheme();
+        html.classList.add("theme-2");
+      }
+    }
+  });
+}
+
 function updateDisplay() {
   const displayTop = document.querySelector("#display-top");
   const displayMain = document.querySelector("#display-main");
@@ -76,6 +143,7 @@ export function bindButtons() {
   bindNumberButtons();
   bindOperatorButtons();
   bindOtherButtons();
+  bindThemeButton();
 }
 
 export function bindKeyboard() {

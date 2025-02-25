@@ -1,0 +1,155 @@
+:root {
+  /* theme 1 - default if user prefers dark theme */
+  --page-bg: hsl(222, 26%, 31%);
+  --keypad-bg: hsl(223, 31%, 20%);
+  --display-bg: hsl(224, 36%, 15%);
+
+  --text-primary: hsl(0, 0%, 100%);
+  --text-secondary: hsl(221, 14%, 31%);
+  --text-tertiary: var(--text-primary);
+  --text-important: var(--text-tertiary);
+
+  --button-primary: hsl(30, 25%, 89%);
+  --button-primary-shadow: hsl(28, 16%, 65%);
+  --button-primary-hover: hsl(0, 0%, 100%);
+
+  --button-alt: hsl(225, 21%, 49%);
+  --button-alt-shadow: hsl(224, 28%, 35%);
+  --button-alt-hover: hsl(224, 51%, 76%);
+
+  --button-important: hsl(6, 63%, 50%);
+  --button-important-shadow: hsl(6, 70%, 34%);
+  --button-important-hover: hsl(6, 93%, 67%);
+
+  #theme-selector-knob {
+    grid-column: 1;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* theme 2 - if user prefers light theme and has not switched themes */
+    --page-bg: hsl(0, 0%, 90%);
+    --keypad-bg: hsl(0, 5%, 81%);
+    --display-bg: hsl(0, 0%, 93%);
+
+    --text-primary: hsl(60, 10%, 19%);
+    --text-secondary: hsl(60, 10%, 19%);
+    --text-tertiary: hsl(0, 0%, 100%);
+    --text-important: var(--text-tertiary);
+
+    --button-primary: hsl(45, 7%, 89%);
+    --button-primary-shadow: hsl(35, 11%, 61%);
+    --button-primary-hover: hsl(0, 0%, 100%);
+
+    --button-alt: hsl(185, 42%, 37%);
+    --button-alt-shadow: hsl(185, 58%, 25%);
+    --button-alt-hover: hsl(186, 48%, 44%);
+
+    --button-important: hsl(25, 98%, 40%);
+    --button-important-shadow: hsl(25, 99%, 27%);
+    --button-important-hover: hsl(25, 97%, 59%);
+
+    #theme-selector-knob {
+      grid-column: 2;
+    }
+  }
+}
+
+:root.theme-1 {
+  /* theme 1 again - user selected */
+  --page-bg: hsl(222, 26%, 31%);
+  --keypad-bg: hsl(223, 31%, 20%);
+  --display-bg: hsl(224, 36%, 15%);
+
+  --text-primary: hsl(0, 0%, 100%);
+  --text-secondary: hsl(221, 14%, 31%);
+  --text-tertiary: var(--text-primary);
+  --text-important: var(--text-tertiary);
+
+  --button-primary: hsl(30, 25%, 89%);
+  --button-primary-shadow: hsl(28, 16%, 65%);
+  --button-primary-hover: hsl(0, 0%, 100%);
+
+  --button-alt: hsl(225, 21%, 49%);
+  --button-alt-shadow: hsl(224, 28%, 35%);
+  --button-alt-hover: hsl(224, 51%, 76%);
+
+  --button-important: hsl(6, 63%, 50%);
+  --button-important-shadow: hsl(6, 70%, 34%);
+  --button-important-hover: hsl(6, 93%, 67%);
+
+  #theme-selector-knob {
+    grid-column: 1;
+  }
+}
+
+:root.theme-2 {
+  /* theme 2 again - user selected */
+  --page-bg: hsl(0, 0%, 90%);
+  --keypad-bg: hsl(0, 5%, 81%);
+  --display-bg: hsl(0, 0%, 93%);
+
+  --text-primary: hsl(60, 10%, 19%);
+  --text-secondary: hsl(60, 10%, 19%);
+  --text-tertiary: hsl(0, 0%, 100%);
+  --text-important: var(--text-tertiary);
+
+  --button-primary: hsl(45, 7%, 89%);
+  --button-primary-shadow: hsl(35, 11%, 61%);
+  --button-primary-hover: hsl(0, 0%, 100%);
+
+  --button-alt: hsl(185, 42%, 37%);
+  --button-alt-shadow: hsl(185, 58%, 25%);
+  --button-alt-hover: hsl(186, 48%, 44%);
+
+  --button-important: hsl(25, 98%, 40%);
+  --button-important-shadow: hsl(25, 99%, 27%);
+  --button-important-hover: hsl(25, 97%, 59%);
+
+  #theme-selector-knob {
+    grid-column: 2;
+  }
+}
+
+:root.theme-3 {
+  /* theme 3 - user selected */
+  --page-bg: hsl(268, 75%, 9%);
+  --keypad-bg: hsl(268, 71%, 12%);
+  --display-bg: var(--keypad-bg);
+
+  --text-primary: hsl(52, 100%, 62%);
+  --text-secondary: var(--text-primary);
+  --text-tertiary: hsl(0, 0%, 100%);
+  --text-important: hsl(198, 20%, 13%);
+
+  --button-primary: hsl(268, 47%, 21%);
+  --button-primary-shadow: hsl(290, 70%, 36%);
+  --button-primary-hover: hsl(290, 72%, 43%);
+
+  --button-alt: hsl(281, 89%, 26%);
+  --button-alt-shadow: hsl(285, 91%, 52%);
+  --button-alt-hover: hsl(285, 82%, 66%);
+
+  --button-important: hsl(176, 100%, 44%);
+  --button-important-shadow: hsl(177, 92%, 70%);
+  --button-important-hover: hsl(176, 88%, 83%);
+
+  button.btn {
+    &.alt-button {
+      &:hover {
+        border-bottom-color: var(--button-alt-shadow);
+      }
+    }
+
+    &.important-button {
+      &:hover {
+        border-bottom-color: var(--button-important-shadow);
+      }
+    }
+  }
+
+  #theme-selector-knob {
+    grid-column: 3;
+  }
+}
