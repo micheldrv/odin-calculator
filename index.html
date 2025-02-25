@@ -14,75 +14,81 @@
     <title>Calculator</title>
   </head>
   <body>
-    <div class="calculator">
-      <div class="calculator-top">
-        <h1>calc</h1>
-        <div class="theme-container">
-          <p>THEME</p>
-          <div class="theme-selector">
-            <div class="theme-selector-numbers">
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
+    <main>
+      <div class="calculator">
+        <div class="calculator-top">
+          <h1>calc</h1>
+          <div class="theme-container">
+            <p>THEME</p>
+            <div class="theme-selector">
+              <div class="theme-selector-numbers">
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+              </div>
+              <button id="theme-selector-btn" aria-label="theme switcher">
+                <span id="theme-selector-knob"></span>
+              </button>
             </div>
-            <button id="theme-selector-btn">
-              <div id="theme-selector-knob"></div>
-            </button>
           </div>
         </div>
+        <div class="section calculator-display">
+          <p id="display-top"></p>
+          <p id="display-main">0</p>
+        </div>
+        <div class="section calculator-body">
+          <button class="btn num-button" data-num="7">7</button>
+          <button class="btn num-button" data-num="8">8</button>
+          <button class="btn num-button" data-num="9">9</button>
+          <button class="btn alt-button" id="del-btn">DEL</button>
+          <button class="btn num-button" data-num="4">4</button>
+          <button class="btn num-button" data-num="5">5</button>
+          <button class="btn num-button" data-num="6">6</button>
+          <button class="btn op-button" data-op="add">+</button>
+          <button class="btn num-button" data-num="1">1</button>
+          <button class="btn num-button" data-num="2">2</button>
+          <button class="btn num-button" data-num="3">3</button>
+          <button class="btn op-button" data-op="subtract">-</button>
+          <button class="btn" id="point-btn">.</button>
+          <button class="btn num-button" data-num="0">0</button>
+          <button class="btn op-button" data-op="divide">/</button>
+          <button class="btn op-button" data-op="multiply">x</button>
+          <button class="btn wide-button alt-button" id="reset-btn">
+            RESET
+          </button>
+          <button class="btn wide-button important-button" id="equals-btn">
+            =
+          </button>
+        </div>
       </div>
-      <div class="section calculator-display">
-        <p id="display-top"></p>
-        <p id="display-main">0</p>
+      <div class="attribution">
+        <h2>Credits</h2>
+        <p>
+          <span>Created by</span>
+          <a href="https://github.com/micheldrv">micheldrv</a>
+        </p>
+        <p>
+          <span>Project on</span>
+          <a
+            href="https://www.theodinproject.com/lessons/foundations-calculator"
+          >
+            The Odin Project
+          </a>
+        </p>
+        <p>
+          <span>Challenge by</span>
+          <a
+            href="https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29"
+          >
+            Frontend Mentor
+          </a>
+        </p>
+        <p>
+          <span>Calculator icon by</span>
+          <a href="https://icons8.com/icon/qrOXrfUDKkOX/calculator">Icons8</a>
+        </p>
       </div>
-      <div class="section calculator-body">
-        <button class="btn num-button" data-num="7">7</button>
-        <button class="btn num-button" data-num="8">8</button>
-        <button class="btn num-button" data-num="9">9</button>
-        <button class="btn alt-button" id="del-btn">DEL</button>
-        <button class="btn num-button" data-num="4">4</button>
-        <button class="btn num-button" data-num="5">5</button>
-        <button class="btn num-button" data-num="6">6</button>
-        <button class="btn op-button" data-op="add">+</button>
-        <button class="btn num-button" data-num="1">1</button>
-        <button class="btn num-button" data-num="2">2</button>
-        <button class="btn num-button" data-num="3">3</button>
-        <button class="btn op-button" data-op="subtract">-</button>
-        <button class="btn" id="point-btn">.</button>
-        <button class="btn num-button" data-num="0">0</button>
-        <button class="btn op-button" data-op="divide">/</button>
-        <button class="btn op-button" data-op="multiply">x</button>
-        <button class="btn wide-button alt-button" id="reset-btn">RESET</button>
-        <button class="btn wide-button important-button" id="equals-btn">
-          =
-        </button>
-      </div>
-    </div>
-    <div class="attribution">
-      <h2>Credits</h2>
-      <p>
-        <span>Created by</span>
-        <a href="https://github.com/micheldrv">micheldrv</a>
-      </p>
-      <p>
-        <span>Project on</span>
-        <a href="https://www.theodinproject.com/lessons/foundations-calculator">
-          The Odin Project
-        </a>
-      </p>
-      <p>
-        <span>Challenge by</span>
-        <a
-          href="https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29"
-        >
-          Frontend Mentor
-        </a>
-      </p>
-      <p>
-        <span>Calculator icon by</span>
-        <a href="https://icons8.com/icon/qrOXrfUDKkOX/calculator">Icons8</a>
-      </p>
-    </div>
+    </main>
     <script src="script.js" type="module"></script>
   </body>
 </html>
