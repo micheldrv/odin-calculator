@@ -48,11 +48,8 @@ body {
 .calculator-top {
   padding: var(--small-padding);
   display: flex;
+  justify-content: space-between;
   align-items: end;
-
-  h1 {
-    flex: 1;
-  }
 }
 
 .theme-container {
